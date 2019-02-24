@@ -1,12 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './style.css';
 import './index.css';
+//import serviceWorker from './serviceWorker.js';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Chat from './components/Chat';
+import Begin from './components/Begin';
+import Exit from './components/Exit';
+import Accueil from './components/Acceuil';
+import VueEnseignant from './components/VueEnseignant';
+import Fiche from './components/Fiche'
+//import { PromiseProvider } from 'mongoose';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  <Router>
+      <div>
+        <Route exact path='/' component={Accueil} /> 
+        <Route exact path='/etudiant' component={App} />
+        <Route exact path='/enseignant' component={VueEnseignant} />
+        <Route path='/chat/:id' component={Chat} />
+        <Route path='/begin/:id' render={(props) => <Begin {...props} />} />
+        <Route path='/exit' component={Exit} />
+        <Route path='/enseignant/fiche/:id' render={(props) => <Fiche {...props} />} />
+      </div>
+  </Router>,
+  document.getElementById('root')
+);
+//serviceWorker();
