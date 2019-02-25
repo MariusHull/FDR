@@ -13,7 +13,7 @@ class Navbar extends Component {
     return (
         <div>
             <nav class="navbar navbar-dark bg-primary">
-
+              <button> Test </button>
             </nav>
         </div>
     );
