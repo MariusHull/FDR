@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Message from './Chat/MessageChat';
 
 class VueEtudiant extends Component {
 
@@ -54,6 +55,10 @@ class VueEtudiant extends Component {
                     <input type="text" class="form-control" name="pseudo" value={pseudo} onChange={this.onChange} placeholder="Pseudo" />
                     <button type="submit" class="btn btn-success">Me connecter</button>
                   </form>
+                  <hr/>
+                  <Message message={"Coucou"} color={0}/>
+                  <Message message={"Salut !"} color={1}/>
+                  <Message message={"Test"} color={0}/>
                   <hr/>
                   <h2>Pseudos</h2>
                         <ul>

@@ -1,5 +1,7 @@
+@import "../../../globalSCSS/size.scss";
+
 *{
-    font-size:12px;
+    font-size: $normal;
 }
 @media only screen and (max-width: 768px) {
     /*for mobiles*/
@@ -17,5 +19,4 @@
     display: flex;
     flex-direction:row;
     justify-content:space-evenly;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }

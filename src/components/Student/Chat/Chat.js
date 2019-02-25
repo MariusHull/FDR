@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MessageChat from './MessageChat';
-import './Chat.css';
+import './Chat.scss';
 
 class Chat extends Component {
 
