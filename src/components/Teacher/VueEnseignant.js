@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import url from '../../config'
 
 var crypto = require('crypto')
 
@@ -19,7 +20,7 @@ class VueEnseignant extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/users/')
+    axios.get(url+'/api/users/')
       .then(res => {
         this.setState({ pseudo:'', pseudos: res.data });
       });
@@ -34,7 +35,7 @@ class VueEnseignant extends Component {
     e.preventDefault();
     const MdP = this.state.MdP;
     console.log(MdP)
-    axios.get('/api/enseignants/')
+    axios.get(url+'/api/enseignants/')
       .then(res => {
         console.log(res.data)
         const hash= crypto.pbkdf2Sync(MdP, res.data.salt, 1000, 64, 'sha512').toString('hex');
