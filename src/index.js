@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import './index.css';
-//import serviceWorker from './serviceWorker.js';
+// import serviceWorker from './serviceWorker.js';
 import App from './App';
 import Chat from './components/Chat';
 import Begin from './components/Begin';

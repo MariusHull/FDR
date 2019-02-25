@@ -56,8 +56,8 @@ class Chat extends Component {
 
   render() {
     let userAnswer;
-    let c;
-    c=["bot", "human"];
+
+
     if (typeof this.state.currentQuestion.answers != 'undefined' & !this.state.currentQuestion.textArea ){
       userAnswer = (
         <div id='choice-buttons'>
