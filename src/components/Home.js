@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-//import axios from 'axios';
 import { Link } from 'react-router-dom';
-//import FooterStop from './FooterStop'
 
-class Exit extends Component {
-
-
-
-
-
+class Home extends Component {
 
 
   render() {
@@ -40,4 +33,4 @@ class Exit extends Component {
 
 
 
-export default Exit;
+export default Home;

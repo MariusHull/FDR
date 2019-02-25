@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-//import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import Chat from './components/Chat';
-import Begin from './components/Begin';
-import Exit from './components/Exit';
-import Accueil from './components/Acceuil';
-import VueEnseignant from './components/VueEnseignant';
-import VueEtudiant from './components/VueEtudiant';
-import Fiche from './components/Fiche'
+import Chat from './components/Student/Chat/Chat';
+import Begin from './components/Student/Begin';
+import Exit from './components/Student/Exit';
+import Home from './components/Home';
+import VueEnseignant from './components/Teacher/VueEnseignant';
+import VueEtudiant from './components/Student/VueEtudiant';
+import Fiche from './components/Teacher/Fiche'
 
 class App extends Component {
 
@@ -30,7 +29,7 @@ class App extends Component {
         <div>
           <Navbar/>
           
-          <Route exact path='/' component={Accueil} /> 
+          <Route exact path='/' component={Home} /> 
           <Route exact path='/etudiant' component={VueEtudiant} />
           <Route exact path='/enseignant' component={VueEnseignant} />
           <Route path='/chat/:id' component={Chat} />
