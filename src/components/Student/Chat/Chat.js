@@ -10,6 +10,7 @@ class Chat extends Component {
     super();
     this.state = {
       chat:[],
+      chats: [],
       user:'', 
       newMessage:'',
       currentQuestion:{answers:[]}
@@ -19,7 +20,7 @@ class Chat extends Component {
   componentDidMount() {
       axios.post(url+`/api/questions/${this.props.match.params.id}`)
         .then(r => {
-          this.setState({user:r.data.user, chat:this.state.chat.concat([{message:r.data.question.body, color:1}]), currentQuestion:r.data.question});
+          this.setState({user:r.data.user, chat:this.state.chat.concat([{message:r.data.question.body, color:1,}]), currentQuestion:r.data.question});
       });
   }
 
@@ -27,6 +28,18 @@ class Chat extends Component {
     const state = this.state
     state[e.target.name] = e.target.value;
     this.setState(state);
+  }
+
+  componentWillUnmount() {
+    var usr = this.state.user
+    usr.numberChats.push(Date.now())
+
+      axios.put(url+`/api/users/endchat/${this.props.match.params.id}`, usr)
+        .then(r => {
+        console.log(this.state.user)
+      });
+
+    
   }
 
   onSubmitButton = (e) => {

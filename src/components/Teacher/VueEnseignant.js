@@ -74,13 +74,12 @@ class VueEnseignant extends Component {
               <h4>Etudiants inscrits : </h4>
               </div>
               <div class="card-body">
-                <p class="card-text">
-                  <ul>
+                  <ul class="card-text">
                     {pseudos.map((p) =>
                       <li><Link to={`/enseignant/fiche/${p._id}`}>{p.pseudo}</Link></li>
                     )}
                   </ul>
-                </p>
+
               </div>
             </div>
                   

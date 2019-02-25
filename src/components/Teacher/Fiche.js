@@ -21,7 +21,7 @@ class Begin extends Component {
       .then(res => {
         
         console.log('user', res.data);
-        var lastChat = res.data.numberChats[-1]
+        var lastChat = res.data.pseudo //numberChats[-1]
         var color = ''
         if (res.data.lastChat < 2) {
           color='green'
@@ -41,7 +41,7 @@ class Begin extends Component {
   render() {
     return (
       <div class="container">
-        <h2>Fiche de l'élève : {this.state.user.details.name}</h2>
+        <h2>Fiche de l'élève : {this.state.user.pseudo}</h2>
         <div class="card bg-light mb-3">
             <div class="card-header">
                 Informations personnelles
@@ -49,14 +49,14 @@ class Begin extends Component {
 
             <div class={this.state.color}>
                 <h5 class="card-title">Statistiques d'utilisation : </h5>
-                <p class="card-text"> Dernière session de chat : {this.state.user.name} </p>
-                <p class="card-text"> Nombre de sessions de chat : {this.state.user.name} </p>
-                <p class="card-text"> Date d'inscription : {this.state.user.name} </p>
+                <p class="card-text"> Dernière session de chat : {this.state.user.numberChats[-1]} </p>
+                <p class="card-text"> Nombre de sessions de chat : {this.state.user.numberChats.length} </p>
+                <p class="card-text"> Date d'inscription : {this.state.user.registration} </p>
             </div>
 
             <div class="card-body">
                 <h5 class="card-title">Sport pratiqué avant l'entrée en licence : </h5>
-                <p class="card-text">{this.state.user.details.sportBeforeComing}</p>
+                <p class="card-text">{this.state.user.pseudo}</p>
             </div>
 
 

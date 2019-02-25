@@ -13,7 +13,7 @@ class Navbar extends Component {
   render() {
     return (
         <div>
-            <nav class="navbar navbar-dark bg-primary">
+            <nav className="navbar navbar-dark bg-primary">
             </nav>
         </div>
     );
