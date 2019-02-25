@@ -3,6 +3,8 @@
 
 nav {
     margin-bottom: $normal;
-    height: $normal;
-    background: $blue;
+    background: $grayDark;
+    display: flex;
+    justify-content: center;
+    padding: $margin1;
 }
