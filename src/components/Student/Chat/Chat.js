@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MessageChat from './MessageChat';
-import './Chat.scss';
+import './Chat.css';
+import url from '../../../config'
+
 
 class Chat extends Component {
 
@@ -9,6 +11,7 @@ class Chat extends Component {
     super();
     this.state = {
       chat:[],
+      chats: [],
       user:'', 
       newMessage:'',
       currentQuestion:{answers:[]}
@@ -16,9 +19,9 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-      axios.post(`/api/questions/${this.props.match.params.id}`)
+      axios.post(url+`/api/questions/${this.props.match.params.id}`)
         .then(r => {
-          this.setState({user:r.data.user, chat:this.state.chat.concat([{message:r.data.question.body, color:1}]), currentQuestion:r.data.question});
+          this.setState({user:r.data.user, chat:this.state.chat.concat([{message:r.data.question.body, color:1,}]), currentQuestion:r.data.question});
       });
   }
 
@@ -26,6 +29,18 @@ class Chat extends Component {
     const state = this.state
     state[e.target.name] = e.target.value;
     this.setState(state);
+  }
+
+  componentWillUnmount() {
+    var usr = this.state.user
+    usr.numberChats.push(Date.now())
+
+      axios.put(url+`/api/users/endchat/${this.props.match.params.id}`, usr)
+        .then(r => {
+        console.log(this.state.user)
+      });
+
+    
   }
 
   onSubmitButton = (e) => {
@@ -39,9 +54,9 @@ class Chat extends Component {
   onSubmit = (answer, e) => {
     console.log('ans', answer);
     this.setState({chat:this.state.chat.concat({message:answer.body, color:0}, {message:answer.reaction, color:1}), newMessage:''})
-    axios.post(`/api/answers/${this.state.user._id}`, {answer:answer, field:this.state.currentQuestion.field})
+    axios.post(url+`/api/answers/${this.state.user._id}`, {answer:answer, field:this.state.currentQuestion.field})
       .then(res => {
-        axios.post(`/api/questions/${this.state.user._id}`)
+        axios.post(url+`/api/questions/${this.state.user._id}`)
           .then(res2 => {
             if (res2.data.isFinish){this.props.history.push(`/begin/${this.props.match.params.id}`);}
             else{

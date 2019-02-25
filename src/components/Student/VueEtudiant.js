@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import url from '../../config'
 
 class VueEtudiant extends Component {
 
@@ -13,7 +14,7 @@ class VueEtudiant extends Component {
       }
     
       componentDidMount() {
-        axios.get('/api/users/')
+        axios.get(url + '/api/users/')
           .then(res => {
             this.setState({ pseudo:'', pseudos: res.data });
           });
@@ -31,7 +32,7 @@ class VueEtudiant extends Component {
         const pseudo = this.state.pseudo;
     
         if (pseudo !== "") {
-          axios.post('/api/users/initget', {pseudo:pseudo})
+          axios.post(url+'/api/users/initget', {pseudo:pseudo})
           .then((result) => {
             this.props.history.push(`/begin/${result.data._id}`);
             console.log(this.props.history);
