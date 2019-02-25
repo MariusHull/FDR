@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 //import { Link } from 'react-router-dom';
 //import FooterStop from './FooterStop'
+import url from '../../config'
 
 class Begin extends Component {
 
@@ -14,7 +15,7 @@ class Begin extends Component {
 
   componentDidMount() {
 
-    axios.get(`/api/users/getid/${this.props.match.params.id}`)
+    axios.get(url+`/api/users/getid/${this.props.match.params.id}`)
       .then(res => {
         console.log('user', res.data);
         this.setState({ user:res.data });
