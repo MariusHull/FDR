@@ -6,6 +6,7 @@
     width: 100%;
     margin: 0px;
     overflow: scroll;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -21,6 +22,9 @@
     align-items: center;
     padding: 0px;
     margin: 0px;
+    & :hover {
+        color : $white;
+    }
 }
 
 .send {

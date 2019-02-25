@@ -15,7 +15,7 @@ class Navbar extends Component {
         <div>
             <nav>
               <Link to={`/`}>
-                  <button class="btn btn-outline-info">Accueil</button>
+                  <button class="btn btn-outline-light">Accueil</button>
               </Link>
             </nav>
         </div>
