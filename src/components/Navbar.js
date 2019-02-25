@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Navbar.css';
+import './Navbar.scss';
 //import axios from 'axios';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
 
@@ -13,7 +13,12 @@ class Navbar extends Component {
   render() {
     return (
         <div>
-            <nav className="navbar navbar-dark bg-primary">
+
+            <nav>
+              <Link to={`/`}>
+                  <button class="btn btn-outline-light">Accueil</button>
+              </Link>
+
             </nav>
         </div>
     );

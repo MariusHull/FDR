@@ -1,0 +1,10 @@
+@import "../globalSCSS/color.scss";
+@import "../globalSCSS/size.scss";
+
+nav {
+    margin-bottom: $normal;
+    background: $grayDark;
+    display: flex;
+    justify-content: center;
+    padding: $margin1;
+}

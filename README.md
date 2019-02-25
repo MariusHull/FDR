@@ -19,6 +19,10 @@ Git de développement du prototype de projet "facteur de réussite" en collabora
 - `$ npm install --save axios`
 - `$ mongoimport --db api --collection questions --file questionsPrenomSport.json --jsonArray`
 
+- `Installer SASS`
+- `npm install react-spinners --save`
+- `npm install --save @emotion/core`
+
 
 ## Lancer l'application
 

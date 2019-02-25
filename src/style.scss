@@ -1,10 +1,10 @@
+@import "./globalSCSS/color.scss";
+
 body {
     padding: 0;
     margin: 0;
-    background-color: #fff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    background-color: $background;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -36,4 +36,16 @@ body {
 
   button {
     margin:2px;
+  }
+
+  .orange {
+    background: $orange;
+  }
+
+  .green {
+    background: $green;
+  }
+
+  .red {
+    background: $red;
   }

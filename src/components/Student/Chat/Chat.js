@@ -4,6 +4,7 @@ import MessageChat from './MessageChat';
 import './Chat.css';
 import url from '../../../config'
 
+
 class Chat extends Component {
 
   constructor() {
