@@ -29,10 +29,10 @@ class App extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { pseudo, pseudos} = this.state;
+    const pseudo = this.state.pseudo;
 
-    {pseudo != "" &&
-    axios.post('/api/users/initget', {pseudo:pseudo})
+    if (pseudo !== "") {
+      axios.post('/api/users/initget', {pseudo:pseudo})
       .then((result) => {
         this.props.history.push(`/begin/${result.data._id}`);
         console.log(this.props.history);
