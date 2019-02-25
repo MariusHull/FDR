@@ -2,7 +2,8 @@
 @import "../../../globalSCSS/size.scss";
 
 .message {
-  margin: $margin1;
+  margin-top: $margin1;
+  margin-bottom: $margin1;
   width: 100%;
 }
 
