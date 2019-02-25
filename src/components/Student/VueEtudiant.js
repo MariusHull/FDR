@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Message from './Chat/MessageChat';
 import Loading from './Chat/Loading';
+import './VueEtudiant.scss';
 
 class VueEtudiant extends Component {
 
@@ -19,8 +20,14 @@ class VueEtudiant extends Component {
           .then(res => {
             this.setState({ pseudo:'', pseudos: res.data });
           });
+          setTimeout( this.updateScroll, 10);
       }
     
+      updateScroll(){
+        var element = document.getElementById("chatbox");
+        element.scrollTop = element.scrollHeight;
+      }
+
       onChange = (e) => {
         const state = this.state
         state[e.target.name] = e.target.value;
@@ -56,11 +63,29 @@ class VueEtudiant extends Component {
                     <input type="text" class="form-control" name="pseudo" value={pseudo} onChange={this.onChange} placeholder="Pseudo" />
                     <button type="submit" class="btn btn-success">Me connecter</button>
                   </form>
+                  <button type="submit" onClick={this.updateScroll} class="btn btn-success">Scroll down</button>
                   <hr/>
-                  <Message message={"Coucou"} color={0}/>
-                  <Message message={"Salut ! J'écris mon message sur deux lignes 😊"} color={1}/>
-                  <Message message={"Test"} color={0}/>
-                  <Loading />
+                  <div class="chatbox" id="chatbox">
+                    <Message message={"Coucou"} color={0}/>
+                    <Message message={"Salut ! J'écris mon message sur deux lignes 😊"} color={1}/>
+                    <Message message={"Test"} color={0}/>
+                    <Message message={"Coucou"} color={0}/>
+                    <Message message={"Salut ! J'écris mon message sur deux lignes 😊"} color={1}/>
+                    <Message message={"Test"} color={1}/>
+                    <Message message={"Coucou"} color={1}/>
+                    <Message message={"Salut ! J'écris mon message sur deux lignes 😊"} color={0}/>
+                    <Message message={"Test"} color={1}/>
+                    <Loading />
+                  </div>
+                  <div id='choice-buttons'>
+                      <button class='btn btn-outline-primary'> Une réponse 😍</button>
+                  </div>
+                  <div class="send-bar">
+                    <input type="text" class="form-control" name="newMessage" placeholder="..." />
+                    <div class="send-box">
+                    <button type="submit" class="btn btn-default send">+</button>
+                    </div>
+                  </div>
                   <hr/>
                   <h2>Pseudos</h2>
                         <ul>
