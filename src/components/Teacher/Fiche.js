@@ -8,7 +8,9 @@ class Begin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user:''
+      user:'',
+      color:'green',
+      lastChat:'',
     };
   }
 
@@ -16,8 +18,19 @@ class Begin extends Component {
 
     axios.get(`/api/users/getid/${this.props.match.params.id}`)
       .then(res => {
+        
         console.log('user', res.data);
-        this.setState({ user:res.data });
+        var lastChat = res.data.numberChats[-1]
+        var color = ''
+        if (res.data.lastChat < 2) {
+          color='green'
+        } else if (res.data.lastChat >= 2 && res.data.lastChat < 4) {
+          color='orange'
+        } else if (res.data.lastChat >= 4) {
+          color='red'
+        }
+
+        this.setState({ user:res.data, color: "card-body " + color, lastChat: lastChat});
       });
 
   }
@@ -33,10 +46,20 @@ class Begin extends Component {
                 Informations personnelles
             </div>
 
+            <div class={this.state.color}>
+                <h5 class="card-title">Statistiques d'utilisation : </h5>
+                <p class="card-text"> Dernière session de chat : {this.state.user.name} </p>
+                <p class="card-text"> Nombre de sessions de chat : {this.state.user.name} </p>
+                <p class="card-text"> Date d'inscription : {this.state.user.name} </p>
+            </div>
+
             <div class="card-body">
                 <h5 class="card-title">Sport pratiqué avant l'entrée en licence : </h5>
                 <p class="card-text">{this.state.user.details.sportBeforeComing}</p>
             </div>
+
+
+
         </div>
       </div>
 
