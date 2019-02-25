@@ -8,13 +8,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
-  @media (min-width: 768px) {
-    body {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
-    }
-  }
   
  p:last-child {
     margin-bottom: 0;
@@ -35,6 +28,10 @@ body {
   
   footer p {
     margin-bottom: .25rem;
+  }
+
+  input {
+    margin: 5px;
   }
 
   button {

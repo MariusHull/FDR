@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Navbar.css';
 //import axios from 'axios';
 //import { Link } from 'react-router-dom';
 
@@ -13,7 +14,6 @@ class Navbar extends Component {
     return (
         <div>
             <nav class="navbar navbar-dark bg-primary">
-              <button> Test </button>
             </nav>
         </div>
     );
