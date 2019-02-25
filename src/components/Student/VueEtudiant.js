@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Message from './Chat/MessageChat';
+import Loading from './Chat/Loading';
 
 class VueEtudiant extends Component {
 
@@ -57,8 +58,9 @@ class VueEtudiant extends Component {
                   </form>
                   <hr/>
                   <Message message={"Coucou"} color={0}/>
-                  <Message message={"Salut !"} color={1}/>
+                  <Message message={"Salut ! J'écris mon message sur deux lignes 😊"} color={1}/>
                   <Message message={"Test"} color={0}/>
+                  <Loading />
                   <hr/>
                   <h2>Pseudos</h2>
                         <ul>
