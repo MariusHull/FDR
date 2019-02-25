@@ -39,24 +39,28 @@ class Begin extends Component {
 
 
   render() {
+    if (this.state.user.numberChats!== undefined && this.state.user.numberChats.length!== 0 && this.state.user.numberChats!==null) {
+      var chat = false
+    }
     return (
-      <div class="container">
+      <div className="container">
         <h2>Fiche de l'élève : {this.state.user.pseudo}</h2>
-        <div class="card bg-light mb-3">
-            <div class="card-header">
+        <div className="card bg-light mb-3">
+            <div className="card-header">
                 Informations personnelles
             </div>
 
-            <div class={this.state.color}>
-                <h5 class="card-title">Statistiques d'utilisation : </h5>
-                <p class="card-text"> Dernière session de chat : {this.state.user.numberChats[-1]} </p>
-                <p class="card-text"> Nombre de sessions de chat : {this.state.user.numberChats.length} </p>
-                <p class="card-text"> Date d'inscription : {this.state.user.registration} </p>
+            <div className={this.state.color}>
+                <h5 className="card-title">Statistiques d'utilisation : </h5>
+                <p className="card-text"> Dernière session de chat : {chat ? this.state.user.numberChats[this.state.user.numberChats.length-1] : "Aucune session"}  </p>
+                <p className="card-text"> Nombre de sessions de chat : {chat ? this.state.user.numberChats.length : "0"} </p>
+                <p className="card-text"> Nombre de réponses : {this.state.user.numberQuestion!==undefined ? this.state.user.numberQuestion : "0"} </p>
+                <p className="card-text"> Date d'inscription : {this.state.user.registration} </p>
             </div>
 
-            <div class="card-body">
-                <h5 class="card-title">Sport pratiqué avant l'entrée en licence : </h5>
-                <p class="card-text">{this.state.user.pseudo}</p>
+            <div className="card-body">
+                <h5 className="card-title">Sport pratiqué avant l'entrée en licence : </h5>
+                <p className="card-text">{this.state.user.pseudo}</p>
             </div>
 
 
