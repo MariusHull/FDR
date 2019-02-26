@@ -12,6 +12,7 @@ class Begin extends Component {
       user:'',
       color:'green',
       lastChat:'',
+      firstLog:''
     };
   }
 
@@ -19,21 +20,59 @@ class Begin extends Component {
 
     axios.get(url+`/api/users/getid/${this.props.match.params.id}`)
       .then(res => {
-        
+        this.setState({ user:res.data }, (state) => {
         console.log('user', res.data);
-        var lastChat = res.data.pseudo //numberChats[-1]
-        var color = ''
-        if (res.data.lastChat < 2) {
-          color='green'
-        } else if (res.data.lastChat >= 2 && res.data.lastChat < 4) {
-          color='orange'
-        } else if (res.data.lastChat >= 4) {
-          color='red'
-        }
 
-        this.setState({ user:res.data, color: "card-body " + color, lastChat: lastChat});
+        
+
+        // Coloration de l'indicateur INVESTISSEMENT
+        if (true || (this.state.user.numberChats!== undefined && this.state.user.numberChats!==null) ) {
+          var color = ''
+          var nbChats = this.state.user.numberChats.length
+
+          var d = new Date()
+          var today = [d.getFullYear(), d.getMonth()+1, d.getDate()]
+          console.log(today)
+
+          if(nbChats!==0){
+            var lastChat = this.state.user.numberChats[this.state.user.numberChats.length-1]
+            console.log(lastChat)
+
+            var lastEval = [lastChat.split("T")[0].split("-")[0], lastChat.split("T")[0].split("-")[1], lastChat.split("T")[0].split("-")[2]]
+            console.log(lastEval)
+
+            if (today[1] - lastEval[1] > 1 || today[0] - lastEval[0] > 1) {
+              color='red'
+            } else if (today[2] - lastEval[2] > 14) {
+              color='orange'
+            } else if (today[1] - lastEval[1] < 14) {
+              color='green'
+            }
+
+
+          } else {
+            color='orange'
+          }
+          
+          
+          
+
+          
+
+          
+          
+          
+        } 
+        this.setState({ user:res.data, color: "card-body " + color, firstLog: this.toDisplay(this.state.user.registration)});
+       })
       });
 
+  }
+
+
+  toDisplay(dateMongo) {
+    var tab = dateMongo.split("T")[0].split("-")
+    return tab[2]+"/"+tab[1]+"/"+tab[0]
   }
 
 
@@ -47,15 +86,17 @@ class Begin extends Component {
         <h2>Fiche de l'élève : {this.state.user.pseudo}</h2>
         <div className="card bg-light mb-3">
             <div className="card-header">
-                Informations personnelles
+                <h3> 
+                  Informations personnelles
+                </h3>
             </div>
 
             <div className={this.state.color}>
                 <h5 className="card-title">Statistiques d'utilisation : </h5>
-                <p className="card-text"> Dernière session de chat : {chat ? this.state.user.numberChats[this.state.user.numberChats.length-1] : "Aucune session"}  </p>
+                <p className="card-text"> Dernière session de chat : {chat ? this.toDisplay(this.state.user.numberChats[this.state.user.numberChats.length-1]) : "Aucune session"}  </p>
                 <p className="card-text"> Nombre de sessions de chat : {chat ? this.state.user.numberChats.length : "0"} </p>
                 <p className="card-text"> Nombre de réponses : {this.state.user.numberQuestion!==undefined ? this.state.user.numberQuestion : "0"} </p>
-                <p className="card-text"> Date d'inscription : {this.state.user.registration} </p>
+                <p className="card-text"> Date d'inscription : {this.state.firstLog} </p>
             </div>
 
             <div className="card-body">
