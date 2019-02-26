@@ -3,6 +3,7 @@ import axios from 'axios';
 //import { Link } from 'react-router-dom';
 //import FooterStop from './FooterStop'
 import url from '../../config'
+import computeStats from './ComputeStats'
 
 class Begin extends Component {
 
@@ -53,15 +54,7 @@ class Begin extends Component {
           } else {
             color='orange'
           }
-          
-          
-          
-
-          
-
-          
-          
-          
+          console.log(res.data.score)
         } 
         this.setState({ user:res.data, color: "card-body " + color, firstLog: this.toDisplay(this.state.user.registration)});
        })

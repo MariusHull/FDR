@@ -12,8 +12,6 @@ class VueEnseignant extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pseudo:'',
-      pseudos:[],
       authorized: false,
       MdP: ''
     };
@@ -25,6 +23,7 @@ class VueEnseignant extends Component {
         this.setState({ pseudo:'', pseudos: res.data });
       });
   }
+  
 
   
     
