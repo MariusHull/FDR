@@ -3,16 +3,19 @@ import axios from 'axios';
 //import { Link } from 'react-router-dom';
 //import FooterStop from './FooterStop'
 import url from '../../config';
+import computeStats from './ComputeStats'
 
 class Begin extends Component {
 
   constructor(props) {
     super(props);
+    //this.computeStats = this.computeStats.bind(this)
     this.state = {
       user:'',
       color:'green',
       lastChat:'',
-      firstLog:''
+      firstLog:'', 
+      score: [],
     };
   }
 
@@ -20,14 +23,23 @@ class Begin extends Component {
 
     axios.get(url+`/api/users/getid/${this.props.match.params.id}`)
       .then(res => {
-        this.setState({ user:res.data }, (state) => {
-        console.log('user', res.data);
+        console.log(res.data.registration)
+        this.setState({ user:res.data, firstLog: this.toDisplay(res.data.registration) }, (state) => {
+        console.log('user', this.state.user);
 
-        
+        var scores = computeStats(this.state.user)
+        var color=''
+        if (scores[1]>7) {
+          color="green"
+        } else if (scores[1]<4) {
+          color="red"
+        } else {
+          color="orange"
+        }
 
         // Coloration de l'indicateur INVESTISSEMENT
         if (this.state.user.numberChats!== undefined && this.state.user.numberChats!==null) {
-          var color = ''
+
           var nbChats = this.state.user.numberChats.length
 
           var d = new Date()
@@ -40,22 +52,22 @@ class Begin extends Component {
 
             var lastEval = [lastChat.split("T")[0].split("-")[0], lastChat.split("T")[0].split("-")[1], lastChat.split("T")[0].split("-")[2]]
             console.log(lastEval)
-
+/*
             if (today[1] - lastEval[1] > 1 || today[0] - lastEval[0] > 1) {
               color='red'
             } else if (today[2] - lastEval[2] > 14) {
               color='orange'
-            } else if (today[1] - lastEval[1] < 14) {
+            } else if (today[2] - lastEval[2] < 14) {
               color='green'
             }
+*/
 
+          } 
+          
 
-          } else {
-            color='orange'
-          }
-          console.log(res.data.score)
-        } 
-        this.setState({ user:res.data, color: "card-body " + color, firstLog: this.toDisplay(this.state.user.registration)});
+          this.setState({ user:res.data, color: "card-body " + color, score: scores});
+        }
+        
        })
       });
 
@@ -72,7 +84,7 @@ class Begin extends Component {
 
   render() {
     if (this.state.user.numberChats!== undefined && this.state.user.numberChats.length!== 0 && this.state.user.numberChats!==null) {
-      var chat = false
+      var chat = true
     }
     return (
       <div className="container">
@@ -85,7 +97,7 @@ class Begin extends Component {
             </div>
 
             <div className={this.state.color}>
-                <h5 className="card-title">Statistiques d'utilisation : </h5>
+                <h5 className="card-title">Utilisation et fidélité : {this.state.score[1]}/10</h5>
                 <p className="card-text"> Dernière session de chat : {chat ? this.toDisplay(this.state.user.numberChats[this.state.user.numberChats.length-1]) : "Aucune session"}  </p>
                 <p className="card-text"> Nombre de sessions de chat : {chat ? this.state.user.numberChats.length : "0"} </p>
                 <p className="card-text"> Nombre de réponses : {this.state.user.numberQuestion!==undefined ? this.state.user.numberQuestion : "0"} </p>

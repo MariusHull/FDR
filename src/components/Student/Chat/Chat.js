@@ -28,7 +28,7 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-      axios.post(url + `/api/questions/${this.props.match.params.id}`)
+      axios.post(url+`/api/questions/${this.props.match.params.id}`)
         .then(r => {
           this.setState({user:r.data.user, chat:this.state.chat.concat([{message:r.data.question.body, color:1}]), currentQuestion:r.data.question});
       });
