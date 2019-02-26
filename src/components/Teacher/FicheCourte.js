@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PolarChart from './PolarChart';
 import './FicheCourte.scss'
 
 class FicheCourte extends Component {
