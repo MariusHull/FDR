@@ -45,14 +45,15 @@ class FakeChat extends Component {
                     <Message message={"Test"} color={1}/>
                     <Message message={"Coucou"} color={1}/>
                     <Message message={"Salut ! J'écris mon message sur deux lignes 😊"} color={0}/>
-                    <Message message={"Test"} color={1}/>
+                    <Message message={"Un beau smiley 😍"} color={1}/>
                     <div class="loading">
                             <Loading />
                     </div>
                   </div>
                   <div class="response-bar">
                     <div id='choice-buttons'>
-                        <button class='btn btn-outline-primary'> Une réponse 😍</button>
+                        <button class='btn btn-outline-primary'> Une réponse </button>
+                        <button class='btn btn-outline-primary'> Une autre réponse </button>
                     </div>
                     <div class="send-bar">
                         <input type="text" class="form-control" name="newMessage" placeholder="..." />

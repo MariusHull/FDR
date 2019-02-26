@@ -18,7 +18,7 @@ class PolarChart extends Component {
                 labels: ["Motivation", "Fidélité", "Lifestyle", "Intégration", "Non besoin de réorientation"],
                 datasets: [{
                     label: this.props.name,
-                    data: this.props.data,
+                    data: [this.props.score.motivation,this.props.score.fidelity,this.props.score.lifestyle,this.props.score.integration,this.props.score.noOrientation],
                     backgroundColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
