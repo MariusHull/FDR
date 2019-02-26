@@ -6,7 +6,6 @@ import Chat from './components/Student/Chat/Chat';
 import Begin from './components/Student/Begin';
 import Exit from './components/Student/Exit';
 import Home from './components/Home';
-import FakeChat from './components/Student/FakeChat';
 import VueEnseignant from './components/Teacher/VueEnseignant';
 import VueEtudiant from './components/Student/VueEtudiant';
 import Fiche from './components/Teacher/Fiche'
@@ -31,7 +30,6 @@ class App extends Component {
           <Navbar/>
           
           <Route exact path='/' component={Home} />
-          <Route exact path='/fakechat' component={FakeChat} /> 
           <Route exact path='/etudiant' component={VueEtudiant} />
           <Route exact path='/enseignant' component={VueEnseignant} />
           <Route path='/chat/:id' component={Chat} />
