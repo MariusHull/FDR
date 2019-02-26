@@ -26,7 +26,7 @@ class Begin extends Component {
         
 
         // Coloration de l'indicateur INVESTISSEMENT
-        if (true || (this.state.user.numberChats!== undefined && this.state.user.numberChats!==null) ) {
+        if (this.state.user.numberChats!== undefined && this.state.user.numberChats!==null) {
           var color = ''
           var nbChats = this.state.user.numberChats.length
 
@@ -60,6 +60,7 @@ class Begin extends Component {
       });
 
   }
+
 
 
   toDisplay(dateMongo) {
