@@ -14,6 +14,10 @@ class MessageChat extends Component {
   componentDidMount() {
   }
 
+  updateScroll(){
+    var element = document.getElementById("chatbox");
+    element.scrollTop = element.scrollHeight;
+  }
 
   render() {
     let messageBox;

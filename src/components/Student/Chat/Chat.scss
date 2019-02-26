@@ -1,22 +1,54 @@
+@import "../../../globalSCSS/color.scss";
 @import "../../../globalSCSS/size.scss";
 
-*{
-    font-size: $normal;
-}
-@media only screen and (max-width: 768px) {
-    /*for mobiles*/
-    #chat-content{
-        width:100%;
-    }
-}
-@media only screen and (min-width: 768px) {
-    /*for desktop*/
-    #chat-content{
-        width:500px;
-    }
-}
-#choice-buttons{
+.chatbox {
+    height: calc(100vh - 150px);
+    width: 100%;
+    margin: 0px;
+    overflow: scroll;
+    overflow-x: hidden;
     display: flex;
-    flex-direction:row;
-    justify-content:space-evenly;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.send-box {
+    height: $box;
+    width: $box;
+    background: $blue;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    & :hover {
+        color : $white;
+    }
+}
+
+.send {
+    color: $white;
+    font-size: $plusSize;
+    padding-bottom: 8px;
+    & :hover {
+        color : $white;
+    }
+}
+
+.send-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: $margin2;
+}
+
+.loading {
+    margin-left: $margin2;
+}
+
+.response-bar {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
 }

@@ -13,7 +13,6 @@ class Loading extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
     }
   }
   render() {
@@ -24,7 +23,7 @@ class Loading extends React.Component {
           sizeUnit={"px"}
           size={12}
           color={'#123abc'}
-          loading={this.state.loading}
+          loading={this.props.loading}
         />
       </div> 
     )
