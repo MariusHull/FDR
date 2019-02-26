@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 //import { Link } from 'react-router-dom';
 //import FooterStop from './FooterStop'
-import url from '../../config'
-import computeStats from './ComputeStats'
+import url from '../../config';
 
 class Begin extends Component {
 
