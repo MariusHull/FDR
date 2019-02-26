@@ -6,6 +6,7 @@
     "@emotion/core": "^10.0.7",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "chart.js": "^2.7.3",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
     "node-sass": "^4.11.0",

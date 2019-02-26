@@ -23,7 +23,7 @@ class FakeChat extends Component {
       onChange = (e) => {
         this.updateScroll()
       }
-        
+      
       render() {
         return (
           <div class="text-center">
@@ -37,17 +37,31 @@ class FakeChat extends Component {
                     <Message message={"Coucou"} color={1}/>
                     <Message message={"Salut ! J'écris mon message sur deux lignes 😊"} color={0}/>
                     <Message message={"Test"} color={1}/>
-                    <Loading />
-                  </div>
-                  <div id='choice-buttons'>
-                      <button class='btn btn-outline-primary'> Une réponse 😍</button>
-                  </div>
-                  <div class="send-bar">
-                    <input type="text" class="form-control" name="newMessage" placeholder="..." />
-                    <div class="send-box">
-                    <button type="submit" class="btn btn-default send">+</button>
+                    <Message message={"Coucou"} color={0}/>
+                    <Message message={"Salut ! J'écris mon message sur deux lignes 😊"} color={1}/>
+                    <Message message={"Test"} color={0}/>
+                    <Message message={"Coucou"} color={0}/>
+                    <Message message={"Salut ! J'écris mon message sur deux lignes 😊"} color={1}/>
+                    <Message message={"Test"} color={1}/>
+                    <Message message={"Coucou"} color={1}/>
+                    <Message message={"Salut ! J'écris mon message sur deux lignes 😊"} color={0}/>
+                    <Message message={"Un beau smiley 😍"} color={1}/>
+                    <div class="loading">
+                            <Loading />
                     </div>
                   </div>
+                  <div class="response-bar">
+                    <div id='choice-buttons'>
+                        <button class='btn btn-outline-primary'> Une réponse </button>
+                        <button class='btn btn-outline-primary'> Une autre réponse </button>
+                    </div>
+                    <div class="send-bar">
+                        <input type="text" class="form-control" name="newMessage" placeholder="..." />
+                        <div class="send-box">
+                            <button type="submit" class="btn btn-default send">+</button>
+                        </div>
+                    </div>
+                    </div>
                 </div>
         );}
 }
