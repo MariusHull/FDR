@@ -9,6 +9,7 @@ import Home from './components/Home';
 import VueEnseignant from './components/Teacher/VueEnseignant';
 import VueEtudiant from './components/Student/VueEtudiant';
 import Fiche from './components/Teacher/Fiche'
+import FicheCourte from './components/Teacher/FicheCourte';
 
 class App extends Component {
 
@@ -30,6 +31,7 @@ class App extends Component {
           <Navbar/>
           
           <Route exact path='/' component={Home} />
+          <Route exact path='/fakefiche' component={FicheCourte} />
           <Route exact path='/etudiant' component={VueEtudiant} />
           <Route exact path='/enseignant' component={VueEnseignant} />
           <Route path='/chat/:id' component={Chat} />

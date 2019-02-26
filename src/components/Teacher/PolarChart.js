@@ -17,7 +17,6 @@ class PolarChart extends Component {
             data: {
                 labels: ["Motivation", "Fidélité", "Lifestyle", "Intégration", "Non besoin de réorientation"],
                 datasets: [{
-                    label: this.props.name,
                     data: [this.props.score.motivation,this.props.score.fidelity,this.props.score.lifestyle,this.props.score.integration,this.props.score.noOrientation],
                     backgroundColor: [
                         'rgba(255, 99, 132, 1)',
@@ -39,7 +38,11 @@ class PolarChart extends Component {
             options: {
                 scale: {
                     display: true
-                  }
+                  },
+                  legend: {
+                    display: false
+                 },
+                 maintainAspectRatio: false,
             }
         });
       }
@@ -50,8 +53,8 @@ class PolarChart extends Component {
         
       render() {
         return (
-          <div class="text-center">
-            <canvas id="myChart" height="400" width="400"></canvas>
+          <div>
+            <canvas id="myChart" width="100" height="100"></canvas>
           </div>
         );}
 }
