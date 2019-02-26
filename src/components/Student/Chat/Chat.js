@@ -3,7 +3,8 @@ import axios from 'axios';
 import MessageChat from './MessageChat';
 import './Chat.scss';
 import Loading from './Loading';
-import url from '../../../config'
+import url from '../../../config';
+import { Link } from 'react-router-dom';
 
 
 class Chat extends Component {
@@ -14,6 +15,7 @@ class Chat extends Component {
       loading: false,
       chat:[],
       chats: [],
+      isFinish:false,
       user:'', 
       newMessage:'',
       currentQuestion:{answers:[]}
@@ -62,7 +64,9 @@ class Chat extends Component {
           .then(res => {
             axios.post(url+`/api/questions/${this.state.user._id}`)
               .then(res2 => {
-                if (res2.data.isFinish){this.props.history.push(`/begin/${this.props.match.params.id}`);}
+                if (res2.data.isFinish){
+                  this.setState({isFinish : true});
+                }
                 else{
                   this.setState({loading : true});
                   this.updateScroll();
@@ -81,7 +85,9 @@ class Chat extends Component {
           .then(res => {
             axios.post(url+`/api/questions/${this.state.user._id}`)
               .then(res2 => {
-                if (res2.data.isFinish){this.props.history.push(`/begin/${this.props.match.params.id}`);}
+                if (res2.data.isFinish){
+                  this.setState({isFinish : true});
+                }
                 else{
                   this.setState({loading : true});
                   this.updateScroll();
@@ -101,8 +107,22 @@ class Chat extends Component {
   render() {
     let userAnswer;
 
-
-    if (typeof this.state.currentQuestion.answers != 'undefined' & !this.state.currentQuestion.textArea ){
+    if (this.state.loading) {
+      userAnswer = (
+        <div>
+        </div>
+      )
+    }
+    else if (this.state.isFinish) {
+      userAnswer = (
+        <div>
+          <Link to={`/begin/${this.props.match.params.id}`}>
+                <button class="btn btn-primary my-2"> Revenir à la page d'acceuil </button>
+            </Link>
+        </div>
+      )
+    }
+    else if (typeof this.state.currentQuestion.answers != 'undefined' & !this.state.currentQuestion.textArea ){
       userAnswer = (
                     <div class="response-bar">
                       <div id='choice-buttons'>
@@ -113,7 +133,7 @@ class Chat extends Component {
                     </div>
       )
     }
-    else{
+    else {
       userAnswer = (
                     <div class="response-bar">
                       <div class="send-bar">
@@ -125,6 +145,7 @@ class Chat extends Component {
                     </div>
       )
     }
+
     return (
             <div class="text-center">
               <div class="chatbox" id="chatbox">
