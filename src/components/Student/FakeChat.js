@@ -23,7 +23,7 @@ class FakeChat extends Component {
       onChange = (e) => {
         this.updateScroll()
       }
-        
+      
       render() {
         return (
           <div class="text-center">
