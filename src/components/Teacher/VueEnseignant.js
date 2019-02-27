@@ -49,6 +49,7 @@ class VueEnseignant extends Component {
   
 
   render() {
+    var count =0;
     const { pseudos} = this.state;
     if(this.state.authorized ===true) {
       return (
@@ -75,8 +76,10 @@ class VueEnseignant extends Component {
               </div>
               <div class="card-body">
                   <ul class="card-text">
-                    {pseudos.map((p) =>
-                      <li><Link to={`/enseignant/fiche/${p._id}`}>{p.pseudo}</Link></li>
+                    {pseudos.map((p) => {
+                      count+=1
+                      return <li key={count}><Link to={`/enseignant/fiche/${p._id}`}>{p.pseudo}</Link></li>
+                    }
                     )}
                   </ul>
 

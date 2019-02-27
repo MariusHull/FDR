@@ -16,6 +16,7 @@ class Begin extends Component {
       lastChat:'',
       firstLog:'', 
       score: [],
+      average: 0,
     };
   }
 
@@ -65,7 +66,7 @@ class Begin extends Component {
           } 
           
 
-          this.setState({ user:res.data, color: "card-body " + color, score: scores});
+          this.setState({ user:res.data, color: "list-group-item " + color, score: scores, average: (scores[0]+ scores[1] + scores[2] + scores[3] + scores[4] )/5});
         }
         
        })
@@ -83,9 +84,32 @@ class Begin extends Component {
 
 
   render() {
+    var fidelity;
+    var motivation;
+    var lifestyle;
+    var integration;
+    var noOrientation;
+
+    if (false) {
+      motivation = true;
+    } else {motivation = false}
+
     if (this.state.user.numberChats!== undefined && this.state.user.numberChats.length!== 0 && this.state.user.numberChats!==null) {
-      var chat = true
-    }
+      fidelity = true;
+    } else {fidelity = false}
+
+    if (false) {
+      lifestyle = true;
+    } else {lifestyle = false}
+
+    if (false) {
+      integration = true;
+    } else {integration = false}
+
+    if (false) {
+      noOrientation = true;
+    } else {noOrientation = false}
+
     return (
       <div className="container">
         <h2>Fiche de l'élève : {this.state.user.pseudo}</h2>
@@ -95,21 +119,42 @@ class Begin extends Component {
                   Informations personnelles
                 </h3>
             </div>
+            <ul className="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5 className="card-title"> Motivation générale : {this.state.score[0]}/10</h5>
+                <p className="card-text"> Indicateur random : {motivation ? "Indicateur" : "Pas d'indicateur"}  </p>
 
-            <div className={this.state.color}>
-                <h5 className="card-title">Utilisation et fidélité : {this.state.score[1]}/10</h5>
-                <p className="card-text"> Dernière session de chat : {chat ? this.toDisplay(this.state.user.numberChats[this.state.user.numberChats.length-1]) : "Aucune session"}  </p>
-                <p className="card-text"> Nombre de sessions de chat : {chat ? this.state.user.numberChats.length : "0"} </p>
+            </li>
+
+            <li class={this.state.color}>
+                <h5 className="card-title"> Utilisation et fidélité : {this.state.score[1]}/10</h5>
+                <p className="card-text"> Dernière session de chat : {fidelity ? this.toDisplay(this.state.user.numberChats[this.state.user.numberChats.length-1]) : "Aucune session"}  </p>
+                <p className="card-text"> Nombre de sessions de chat : {fidelity ? this.state.user.numberChats.length : "0"} </p>
                 <p className="card-text"> Nombre de réponses : {this.state.user.numberQuestion!==undefined ? this.state.user.numberQuestion : "0"} </p>
                 <p className="card-text"> Date d'inscription : {this.state.firstLog} </p>
+            </li>
+
+            <li class="list-group-item">
+                <h5 className="card-title"> Style de vie : {this.state.score[2]}/10</h5>
+                <p className="card-text"> Indicateur random : {lifestyle ? "Indicateur" : "Pas d'indicateur"}  </p>
+            </li>
+            
+            <li class="list-group-item">
+                <h5 className="card-title"> Intégration : {this.state.score[3]}/10</h5>
+                <p className="card-text"> Indicateur random : {integration ? "Indicateur" : "Pas d'indicateur"}  </p>
+            </li>
+            
+            <li class="list-group-item">
+                <h5 className="card-title">Pertinence de l'orientation : {this.state.score[4]}/10</h5>
+                <p className="card-text"> Indicateur random : {noOrientation ? "Indicateur" : "Pas d'indicateur"}  </p>
+            </li>
+            </ul>
+
+
+            <div className="card-footer">
+                <h4 className="card-title">Score moyen : {this.state.average}/10</h4>
             </div>
-
-            <div className="card-body">
-                <h5 className="card-title">Sport pratiqué avant l'entrée en licence : </h5>
-                <p className="card-text">{this.state.user.pseudo}</p>
-            </div>
-
-
+            
 
         </div>
       </div>
